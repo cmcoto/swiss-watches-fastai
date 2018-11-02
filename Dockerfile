@@ -11,7 +11,7 @@ RUN pip install fastai
 RUN pip install starlette uvicorn python-multipart aiohttp
 
 ADD watch.py watch.py
-ADD usa-inaturalist-cats.pth usa-inaturalist-cats.pth
+
 
 # Run it once to trigger resnet download
 RUN python watch.py
