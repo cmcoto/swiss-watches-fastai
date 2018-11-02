@@ -14,9 +14,9 @@ ADD cougar.py cougar.py
 ADD usa-inaturalist-cats.pth usa-inaturalist-cats.pth
 
 # Run it once to trigger resnet download
-RUN python cougar.py
+RUN python watch.py
 
 EXPOSE 8008
 
 # Start the server
-CMD ["python", "cougar.py", "serve"]
+CMD ["python", "watch.py", "serve"]
