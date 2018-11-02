@@ -28,7 +28,7 @@ path = Path("/tmp")
 
 classes = ['audemars','delma','omega','oris','patek','rolex','tissot']
 
-data2 = ImageDataBunch.single_from_classes(path, classes, tfms=get_transforms(), size=224).normalize(imagenet_stats)
+data2 = ImageDataBunch.single_from_classes(path, classes, tfms=get_transforms(), size=224)
 learn = create_cnn(data2, models.resnet34)
 learn.load('stage-2')
 
