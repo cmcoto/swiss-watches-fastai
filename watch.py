@@ -24,7 +24,8 @@ async def get_bytes(url):
 
 app = Starlette()
 
-path = Path("/tmp")
+# SELECT Appropriate path
+path = Path("data/watches")
 
 classes = ['audemars','delma','omega','oris','patek','rolex','tissot']
 
@@ -49,9 +50,10 @@ async def classify_url(request):
 
 def predict_image_from_bytes(bytes):
     img = open_image(BytesIO(bytes))
-    losses = img.predict(learn)
+    class_,predictions, losses = learn.predict(img)
     return JSONResponse({
-        "predictions": sorted(
+        "class": class_,
+        "scores": sorted(
             zip(learn.data.classes, map(float, losses)),
             key=lambda p: p[1],
             reverse=True
@@ -63,6 +65,7 @@ def predict_image_from_bytes(bytes):
 def form(request):
     return HTMLResponse(
         """
+        <h3>This app will classify 6 types of Swiss Watches!</h3>
         <form action="/upload" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="file">
@@ -82,5 +85,10 @@ def redirect_to_homepage(request):
 
 
 if __name__ == "__main__":
+    """
+    Start app with the command:
+    python FILENAME serve
+    ex: python watch.py serve
+    """
     if "serve" in sys.argv:
-        uvicorn.run(app, host="0.0.0.0", port=8008)
+        uvicorn.run(app, host="0.0.0.0", port=port=8081)
