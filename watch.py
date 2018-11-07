@@ -26,7 +26,7 @@ async def get_bytes(url):
 app = Starlette()
 
 # SELECT Appropriate path
-path = Path("data/watches")
+path = Path("data")
 
 classes = ['audemars','delma','omega','oris','patek','rolex','tissot']
 # Create a DataBunch
