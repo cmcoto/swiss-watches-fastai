@@ -33,7 +33,7 @@ classes = ['audemars','delma','omega','oris','patek','rolex','tissot']
 data = ImageDataBunch.single_from_classes(path, classes, tfms=get_transforms(), size=224).normalize(imagenet_stats)
 
 # Create a learner and load the weights
-learn = create_cnn(data2, models.resnet34)
+learn = create_cnn(data, models.resnet34)
 learn.load("stage-2")
 
 
