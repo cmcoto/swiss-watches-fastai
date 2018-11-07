@@ -10,11 +10,12 @@ RUN pip install fastai
 # Install starlette and uvicorn
 RUN pip install starlette uvicorn python-multipart aiohttp
 
+COPY data/ data/
 ADD watch.py watch.py
 
 
 # Run it once to trigger resnet download
-RUN python watch.py
+# RUN python watch.py   # You don't need to do this!
 
 EXPOSE 8008
 
