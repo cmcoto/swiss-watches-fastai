@@ -28,7 +28,8 @@ app = Starlette()
 # SELECT Appropriate path
 path = Path("data")
 
-classes = ['audemars','delma','omega','oris','patek','rolex','tissot']
+#Add classes (13 brands)
+classes = ['audemars','cartier','delma','jaeger-lecoultre','mondain','omega','oris','patek','rolex','swatch','tag-heuer','tissot','vulcain']
 # Create a DataBunch
 data = ImageDataBunch.single_from_classes(path, classes, tfms=get_transforms(), size=224).normalize(imagenet_stats)
 
